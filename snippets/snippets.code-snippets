@@ -1,0 +1,164 @@
+{
+  "Sortowanie bąbelkowe": {
+    "prefix": ["inf04-bubblesort"],
+    "body": [
+      "def sortowanie_babelkowe(tablica):",
+      "    #pętla zewnętrzna do przejścia przez wszystkie elementy tablicy",
+      "    for i in range(len(tablica)):",
+      "        #pętla wewnętrzna do porównywania elementów sąsiednich",
+      "        for j in range(0, len(tablica)-i-1):",
+      "            #jeśli element jest większy od sąsiada, to zamień miejscami",
+      "            if tablica[j] > tablica[j+1]:",
+      "                tablica[j], tablica[j+1] = tablica[j+1], tablica[j]",
+      "    return tablica"
+    ],
+    "description": "Sortowanie bąbelkowe."
+  },
+  "Sortowanie przez zliczanie": {
+    "prefix": ["inf04-countingsort"],
+    "body": [
+      "def sortowanie_przez_zliczanie(tablica):",
+      "    # znajdowanie największej wartości w tablicy",
+      "    najwieksza_wartosc = max(tablica)",
+      "    # utworzenie tablicy pomocniczej o rozmiarze (najwieksza_wartosc + 1)",
+      "    # i wypełnienie jej zerami",
+      "    tablica_pomocnicza = [0] * (najwieksza_wartosc + 1)",
+      "    # zliczanie wystąpień każdej liczby w tablicy tablica",
+      "    for i in range(len(tablica)):",
+      "        tablica_pomocnicza[tablica[i]] += 1",
+      "    # zmiana tablicy tablica_pomocnicza tak, aby zawierała sumy poprzednich elementów",
+      "    for i in range(1, len(tablica_pomocnicza)):",
+      "        tablica_pomocnicza[i] += tablica_pomocnicza[i-1]",
+      "    # utworzenie tablicy wynikowej",
+      "    posortowana_tablica = [0] * len(tablica)",
+      "    # sortowanie tablicy tablica",
+      "    for i in range(len(tablica)-1, -1, -1):",
+      "        posortowana_tablica[tablica_pomocnicza[tablica[i]]-1] = tablica[i]",
+      "        tablica_pomocnicza[tablica[i]] -= 1",
+      "    # zwrócenie posortowanej tablicy",
+      "    return posortowana_tablica"
+    ],
+    "description": "Sortowanie przez zliczanie."
+  },
+  "Sortowanie przez scalanie": {
+    "prefix": ["inf04-mergesort"],
+    "body": [
+      "def sortowanie_przez_scalanie(tablica):",
+      "    # Jeśli długość tablicy jest mniejsza niż 2, nie ma potrzeby sortowania",
+      "    if len(tablica) < 2:",
+      "        return tablica",
+      "    # Podziel tablicę na dwie połowy",
+      "    srodek = len(tablica) // 2",
+      "    lewa_polowa = tablica[:srodek]",
+      "    prawa_polowa = tablica[srodek:]",
+      "    # Rekurencyjnie sortuj połówki",
+      "    lewa_polowa = sortowanie_przez_scalanie(lewa_polowa)",
+      "    prawa_polowa = sortowanie_przez_scalanie(prawa_polowa)",
+      "    # Scal posortowane połówki",
+      "    return scalanie(lewa_polowa, prawa_polowa)",
+      "def scalanie(lewa, prawa):",
+      "    wynik = []",
+      "    i = 0  # indeks dla lewej połówki",
+      "    j = 0  # indeks dla prawej połówki",
+      "    # Przesuwaj się przez połówki i porównuj kolejne elementy",
+      "    while i < len(lewa) and j < len(prawa):",
+      "        if lewa[i] < prawa[j]:",
+      "            wynik.append(lewa[i])",
+      "            i += 1",
+      "        else:",
+      "            wynik.append(prawa[j])",
+      "            j += 1",
+      "    # Dodaj pozostałe elementy z połówek",
+      "    wynik.extend(lewa[i:])",
+      "    wynik.extend(prawa[j:])",
+      "    return wynik"
+    ],
+    "description": "Sortowanie przez scalanie."
+  },
+  "Sortowanie przez wstawianie": {
+    "prefix": ["inf04-insertionsort"],
+    "body": [
+      "def sortowanie_przez_wstawianie(tablica):",
+      "    # Przejdź przez każdy element tablicy (z wyjątkiem pierwszego)",
+      "    for i in range(1, len(tablica)):",
+      "        # Przypisz obecny element do tymczasowej zmiennej",
+      "        tymczasowa = tablica[i]",
+      "        # Ustaw indeks 'j' jako indeks poprzedniego elementu",
+      "        j = i - 1",
+      "        # Przesuwaj elementy większe od tymczasowej zmiennej jedną pozycję w prawo",
+      "        while j >= 0 and tablica[j] > tymczasowa:",
+      "            tablica[j + 1] = tablica[j]",
+      "            j -= 1",
+      "        # Wstaw tymczasową zmienną na odpowiednie miejsce",
+      "        tablica[j + 1] = tymczasowa",
+      "    return tablica"
+    ],
+    "description": "Sortowanie przez wstawianie."
+  },
+  "Sortowanie szybkie": {
+    "prefix": ["inf04-quicksort"],
+    "body": [
+      "def sortowanie_szybkie(tablica):",
+      "    # Jeśli długość tablicy jest mniejsza niż 2, nie ma potrzeby sortowania",
+      "    if len(tablica) < 2:",
+      "        return tablica",
+      "    pivot = tablica[0] # wybierz pierwszy element jako pivot",
+      "    mniejsze = [x for x in tablica[1:] if x <= pivot] # elementy mniejsze od pivot",
+      "    wieksze = [x for x in tablica[1:] if x > pivot] # elementy wieksze od pivot",
+      "    return sortowanie_szybkie(mniejsze) + [pivot] + sortowanie_szybkie(wieksze) # scal posortowane podtablice"
+    ],
+    "description": "Sortowanie szybkie."
+  },
+  "Sortowanie Wyszukiwanie binarne": {
+    "prefix": ["inf04-binarysearch"],
+    "body": [
+      "def wyszukaj_binarnie(tablica, szukany):",
+      "    # Ustaw początkowy lewy i prawy indeks",
+      "    lewy = 0",
+      "    prawy = len(tablica) - 1",
+      "    # Dopóki lewy indeks jest mniejszy od prawego",
+      "    while lewy <= prawy:",
+      "        # Oblicz środkowy indeks",
+      "        srodek = (lewy + prawy) // 2",
+      "        # Jeśli środkowy element jest szukanym elementem",
+      "        if tablica[srodek] == szukany:",
+      "            return srodek",
+      "        # Jeśli szukany element jest mniejszy niż środkowy element",
+      "        elif tablica[srodek] > szukany:",
+      "            prawy = srodek - 1",
+      "        # W przeciwnym razie",
+      "        else:",
+      "            lewy = srodek + 1",
+      "    # Jeśli element nie zostanie znaleziony",
+      "    return -1"
+    ],
+    "description": "Wyszukiwanie binarne."
+  },
+  "Największy wspólny dzielnik": {
+    "prefix": ["inf04-nwd"],
+    "body": ["def nwd(a, b): return nwd(b, a % b) if b else a"],
+    "description": "Największy wspólny dzielnik."
+  },
+  "Najmniejsza wspólna wielokrotność": {
+    "prefix": ["inf04-nww"],
+    "body": ["def nww(a, b): return a * b // nwd(a, b)"],
+    "description": "Najmniejsza wspólna wielokrotność."
+  },
+  "Silnia": {
+    "prefix": ["inf04-silnia"],
+    "body": ["def silnia(n): return n * silnia(n-1) if n > 1 else 1"],
+    "description": "Silnia."
+  },
+  "Potęga": {
+    "prefix": ["inf04-potega"],
+    "body": ["def potega(x, n): return x if n == 1 else x * potega(x, n - 1)"],
+    "description": "Potęga."
+  },
+    "Czy liczba jest pierwsza": {
+    "prefix": ["inf04-pierwsza"],
+    "body": [
+      "def czy_pierwsza(n): return all([n % i != 0 for i in range(2, n)]) if n > 1 else False"
+    ],
+    "description": "Czy liczba jest pierwsza."
+  }
+}

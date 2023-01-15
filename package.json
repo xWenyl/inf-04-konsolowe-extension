@@ -1,0 +1,21 @@
+{
+  "name": "inf-04-konsolowe",
+  "displayName": "INF.04 Konsolowe",
+  "description": "Wsparcie w egzaminie INF.04 (Aplikacja konsolowa)",
+  "version": "0.0.1",
+  "icon": "images/logo_konsolowe.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}
