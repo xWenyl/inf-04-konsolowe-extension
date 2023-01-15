@@ -6,6 +6,7 @@
   "author": {
     "name": "Wenyl"
   },
+  "publisher": "Wenyl",
   "icon": "images/logo_konsolowe.png",
   "engines": {
     "vscode": "^1.74.0"
