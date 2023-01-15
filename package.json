@@ -3,13 +3,24 @@
   "displayName": "INF.04 Konsolowe",
   "description": "Wsparcie w egzaminie INF.04 (Aplikacja konsolowa)",
   "version": "0.0.1",
+  "author": {
+    "name": "Wenyl"
+  },
   "icon": "images/logo_konsolowe.png",
   "engines": {
     "vscode": "^1.74.0"
   },
+  "keywords": [
+    "konsolowe",
+    "inf04",
+    "console",
+    "inf.04",
+    "zawodowy"
+  ],
   "categories": [
     "Snippets"
   ],
+  "license": "SEE LICENSE IN LICENSE.md",
   "contributes": {
     "snippets": [
       {
@@ -17,5 +28,13 @@
         "path": "./snippets/snippets.code-snippets"
       }
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xWenyl/inf-04-konsolowe-extension"
+  },
+  "galleryBanner": {
+    "color": "#804D80",
+    "theme": "dark"
   }
 }
